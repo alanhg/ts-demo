@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,31 +12,31 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
+exports.__esModule = true;
 var Greeter = /** @class */ (function () {
     function Greeter() {
-        this.greeting = '';
     }
-    Greeter = __decorate([
-        modifyProp
-    ], Greeter);
+    Greeter.greeting = '';
+    Greeter.username = '';
     return Greeter;
 }());
-function modifyProp(constructor) {
-    return /** @class */ (function (_super) {
-        __extends(class_1, _super);
-        function class_1() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.greeting = "new property";
-            return _this;
-        }
-        return class_1;
-    }(constructor));
+exports["default"] = Greeter;
+function modifyProp(target, propertyKey) {
+    target[propertyKey] = Math.random().toString();
 }
-var greeter = new Greeter();
-console.log(greeter.greeting);
+function modifyProps(constructor) {
+    {
+        return /** @class */ (function (_super) {
+            __extends(class_1, _super);
+            function class_1() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.greeting = Math.random().toString();
+                _this.username = Math.random().toString();
+                return _this;
+            }
+            return class_1;
+        }(constructor));
+    }
+}
+console.log(Greeter.greeting);
+console.log(Greeter.username);
